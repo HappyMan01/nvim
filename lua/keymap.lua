@@ -56,9 +56,9 @@ G.map({
 
     -- CTRL SHIFT + 方向 快速跳转
     { 'n', 'H',  '^',       { noremap = true } },
-    { 'n', 'L', '$',       { noremap = true } },
+    { 'n', 'L', '$<left>',       { noremap = true } },
     { 'v', 'H',  '^',       { noremap = true } },
-    { 'v', 'L', '$',       { noremap = true } },
+    { 'v', 'L', '$<left>',       { noremap = true } },
 
     -- 选中全文 选中{ 复制全文
     { 'n', '<leader>a',       'ggVG',    { noremap = true } },
@@ -79,18 +79,21 @@ G.map({
     { 'n', '<c-j>',     '<c-w>j',           { noremap = true } },
 
 
-    -- tt 打开一个10行大小的终端
-    { 'n', 'tt',          ':below 10sp | term<cr>a', { noremap = true, silent = true } },
-    
+    -- tt 打开一个10行大小的终端(并进行配置)
+    { 'n', 'tt',          ':below 8sp | term<cr>a', { noremap = true, silent = true } },
+    { 't', '<ESC>',          '<C-\\><C-n>', { noremap = true, silent = true } },
+    { 't', '<C-\\>',          '<C-\\><C-n>:bdelete! %<CR>', { noremap = true, silent = true } },
+    { 't', '<C-\\>',          '<C-\\><C-n>:bdelete! %<CR>', { noremap = true, silent = true } },
+    { 't', '<C-k>',          '<C-\\><C-n><C-w>k', { noremap = true, silent = true } },
     -- buffers
     { 'n', 'W',           ':bw<cr>',          { noremap = true, silent = true } },
     { 'n', 'ss',          ':bn<cr>',          { noremap = true, silent = true } },
-    { 'n', '<m-h>',    ':bp<cr>',          { noremap = true, silent = true } },
-    { 'n', '<m-l>',   ':bn<cr>',          { noremap = true, silent = true } },
-    { 'v', '<m-h>',    '<esc>:bp<cr>',     { noremap = true, silent = true } },
-    { 'v', '<m-l>',   '<esc>:bn<cr>',     { noremap = true, silent = true } },
-    { 'i', '<m-h>',    '<esc>:bp<cr>',     { noremap = true, silent = true } },
-    { 'i', '<m-l>',   '<esc>:bn<cr>',     { noremap = true, silent = true } },
+    { 'n', '<a-h>',    ':bp<cr>',          { noremap = true, silent = true } },
+    { 'n', '<a-l>',   ':bn<cr>',          { noremap = true, silent = true } },
+    -- { 'v', '<m-h>',    '<esc>:bp<cr>',     { noremap = true, silent = true } },
+    -- { 'v', '<m-l>',   '<esc>:bn<cr>',     { noremap = true, silent = true } },
+    -- { 'i', '<m-h>',    '<esc>:bp<cr>',     { noremap = true, silent = true } },
+    -- { 'i', '<m-l>',   '<esc>:bn<cr>',     { noremap = true, silent = true } },
 
     -- 切换是否wrap
     { 'n', '\\w',         "&wrap == 1 ? ':set nowrap<cr>' : ':set wrap<cr>'", { noremap = true, expr = true } },

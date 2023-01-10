@@ -6,6 +6,7 @@ function M.config()
         'coc-marketplace',
         '@yaegassy/coc-volar',
         'coc-tsserver',
+        'coc-tsserver',
         'coc-json',
         'coc-html', 'coc-css',
         'coc-clangd',
@@ -25,6 +26,7 @@ function M.config()
     G.cmd("hi! link CocMenuSel PmenuSel")
     G.map({
         { 'n', '<leader>rn', '<Plug>(coc-rename)', {silent = true} },
+        { 'n', '<leader>re', '<Plug>(coc-codeaction-refactor)', {silent = true} },
         { 'n', 'gd', '<Plug>(coc-definition)', {silent = true} },
         { 'n', 'gy', '<Plug>(coc-type-definition)', {silent = true} },
         { 'n', 'gi', '<Plug>(coc-implementation)', {silent = true} },

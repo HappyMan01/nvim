@@ -62,9 +62,19 @@ require('packer').startup({
         require('pack/tree-sitter').config()
         use { 'nvim-treesitter/nvim-treesitter', config = "require('pack/tree-sitter').setup()", run = ':TSUpdate', event = 'BufRead' }
         use { 'nvim-treesitter/playground', after = 'nvim-treesitter' }
+        -- markdown预览插件 导航生成插件
+        require('pack/markdown').config()
+        use { 'mzlogin/vim-markdown-toc', ft = 'markdown' }
+        use { 'iamcco/markdown-preview.nvim', config = "require('pack/markdown').setup()", run = 'cd app && yarn install', cmd = 'MarkdownPreview', ft = 'markdown' }
+
         -- 文件管理器
         require('pack/nvim-tree').config()
-        use { 'kyazdani42/nvim-tree.lua', config = "require('pack/nvim-tree').setup()", cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' } }
+        use { 'kyazdani42/nvim-tree.lua',
+        config = "require('pack/nvim-tree').setup()",
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+        cmd = { 'NvimTreeToggle', 'NvimTreeFindFileToggle' } }
 
         -- 状态栏 & 标题栏
         require('pack/nvim-lines').config()
